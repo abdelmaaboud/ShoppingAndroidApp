@@ -1,16 +1,22 @@
 package com.example.islam.project;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 EditText emailtxt ,passwordtxt;
     Button loginbtn;
+    CheckBox remember ;
+    public static final String USERPREFRENCE = "USER" ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +26,8 @@ EditText emailtxt ,passwordtxt;
         loginbtn = (Button)findViewById(R.id.loginbtn_login);
         ////
         final UserDbHelper helper = new UserDbHelper(this);
+        remember = (CheckBox) findViewById(R.id.checkBox) ;
+
 
         /*
         helper.addProduct("samsung galaxy",2000 ,20 ,1);
@@ -48,6 +56,20 @@ EditText emailtxt ,passwordtxt;
 
         ///
 
+
+
+
+        SharedPreferences prefs = getSharedPreferences(USERPREFRENCE, MODE_PRIVATE);
+        String restoredText = prefs.getString("email", null);
+        if (restoredText != null) {
+            String e_mail = prefs.getString("email", "No name defined");//"No name defined" is the default value.
+            String pass_ = prefs.getString("pass", "No pass"); //0 is the default value.
+            emailtxt.setText(e_mail);
+            passwordtxt.setText(pass_);
+        }
+
+
+
         Toast.makeText(getApplicationContext(),String.valueOf( helper.getcountuser()) ,Toast.LENGTH_LONG).show();
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +86,16 @@ EditText emailtxt ,passwordtxt;
                     int userid=helper.Checkuser(email,pass);
 
                     if (userid!= 0){
+                        if(remember.isChecked()){
+                            SharedPreferences sharedpreferences = getSharedPreferences(USERPREFRENCE, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                            editor.putString("email", email);
+                            editor.putString("pass", pass);
+                            editor.commit();
+
+                        }
+
                         Cart cart = new Cart(userid);
                         Intent intent = new Intent(Login.this,categories.class);
                         startActivity(intent);
