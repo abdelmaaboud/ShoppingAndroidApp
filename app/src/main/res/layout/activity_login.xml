@@ -50,6 +50,14 @@
         android:textSize="18sp"
         android:id="@+id/password_txt_login"
         android:inputType="textPassword" />
+
+    <CheckBox
+        android:text="Remember me"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox"
+        />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
