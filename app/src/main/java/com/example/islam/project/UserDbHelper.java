@@ -5,7 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -50,11 +51,11 @@ public class UserDbHelper extends SQLiteOpenHelper {
                 "\t`id`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
                 "\t`date`\tDATETIME,\n" +
                 "\t`custid`\tINTEGER NOT NULL,\n" +
-                "\t`address`\tINTEGER\n" +
+                "\t`address`\tTEXT\n" +
                 ")");
 
 
-        db.execSQL("CREATE TABLE `orederdetails` (\n" +
+        db.execSQL("CREATE TABLE `orderdetails` (\n" +
                 "\t`id`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
                 "\t`orderid`\tINTEGER NOT NULL,\n" +
                 "\t`prodid`\tINTEGER NOT NULL,\n" +
@@ -209,5 +210,53 @@ public class UserDbHelper extends SQLiteOpenHelper {
         userdatabase.close();
 
     }
+
+
+    public  long CreateNewOrder(int custid,String address){
+        ContentValues row = new ContentValues();
+
+        //get  today date
+        Date today = new Date();
+        today.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+        String date = sdf.format(new Date());
+
+
+        row.put("custid",custid);
+        row.put("address",address);
+        row.put("date",date);
+
+
+        userdatabase=getWritableDatabase();
+      long id = userdatabase.insert("orders",null,row);
+        userdatabase.close();
+        return id;
+
+
+    }
+    public void addOrderDetails(int orderid,int prodid,int quantity){
+        userdatabase=getWritableDatabase();
+
+        ContentValues row = new ContentValues();
+
+        row.put("orderid",orderid);
+        row.put("prodid",prodid);
+        row.put("quantity",quantity);
+
+        userdatabase=getWritableDatabase();
+        userdatabase.insert("orderdetails",null,row);
+        userdatabase.close();
+
+    }
+    public  void decreaseProductQuant(int id,int q){
+        userdatabase=getWritableDatabase();
+
+        String query = "update products set quantity = quantity - "+ String.valueOf(q)+" where id = "+String.valueOf(id);
+        userdatabase.execSQL(query);
+        userdatabase.close();
+
+
+    }
+
 
 }

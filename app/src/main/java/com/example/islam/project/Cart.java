@@ -1,5 +1,8 @@
 package com.example.islam.project;
 
+import android.content.ContentValues;
+import android.content.Context;
+
 import java.util.ArrayList;
 
 /**
@@ -56,7 +59,7 @@ public class Cart {
 
     public static double getTotalMoney() {
         double n=0,p=0;
-
+        Cart.totalMoney=0;
         for (Product pr: Cart.productsInCart){
             p= pr.getPrice();
             n=pr.getQuantity();
@@ -67,6 +70,24 @@ public class Cart {
 
 
         return totalMoney;
+    }
+
+    public static void MakeOrder(Context context,String address){
+
+        final UserDbHelper helper = new UserDbHelper(context);
+       long orderid= helper.CreateNewOrder(Cart.userId,address);
+        for (Product pr: Cart.productsInCart){
+            helper.addOrderDetails((int)orderid,pr.getId(),pr.getQuantity());
+            helper.decreaseProductQuant(pr.getId(),pr.getQuantity());
+
+
+        }
+        // to clear all products -- the user can add again from app
+        Cart.productsInCart.clear();
+
+
+
+
     }
 
 }
