@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_registration"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.islam.project.registration"
+    android:background="@color/FloralWhite">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="registration"
+        android:textSize="20sp"
+        android:layout_marginTop="10sp"
+        android:textColor="@color/Black"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Name :"
+        android:textSize="14sp"
+        android:layout_marginTop="14sp"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14sp"
+        android:textSize="14sp"
+        android:id="@+id/username_txt_reg" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14sp"
+        android:textSize="14sp"
+        android:text="E-mail"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14sp"
+        android:textSize="14sp"
+        android:id="@+id/emailtxt_reg"
+        android:inputType="textEmailAddress" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14sp"
+        android:textSize="14sp"
+        android:text="PassWord"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_marginTop="14sp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:id="@+id/passwordtxt_reg" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14sp"
+        android:textSize="14sp"
+        android:text="Birth Date"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_marginTop="14sp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:id="@+id/birthdattxt_reg"
+        android:inputType="datetime" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14sp"
+        android:textSize="14sp"
+        android:layout_marginLeft="120sp"
+        android:text="Register"
+        android:id="@+id/registerbtn_reg" />
+</LinearLayout>

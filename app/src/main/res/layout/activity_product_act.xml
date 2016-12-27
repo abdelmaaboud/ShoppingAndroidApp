@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_product_act"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.islam.project.product_act">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15sp"
+    android:id="@+id/prod_name_prod"
+    android:textSize="24sp"
+    android:textColor="@color/darkblue"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:id="@+id/prod_price_prod"
+        android:textSize="22sp"
+        android:textColor="@color/darkorange"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:id="@+id/prod_quan_prod"
+        android:textSize="20sp"
+        android:textColor="@color/green"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="enter quantity : "
+            android:textColor="@color/blue"
+
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:id="@+id/quantity_requir" />
+
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/prod_addtocart_prod"
+        android:text="add to cart"
+        android:layout_marginTop="20sp"
+        android:textColorHighlight="@color/orange"
+        android:shadowColor="@color/red"
+        android:background="@color/LightGoldenrodYellow"
+        android:textColor="@color/Chocolate"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/prod_show_cart_prod"
+        android:text="Show shopping cart"
+        android:layout_marginTop="20sp"
+        android:textColorHighlight="@color/orange"
+        android:shadowColor="@color/red"
+        android:background="@color/LightYellow"
+        android:textColor="@color/Crimson"/>
+</LinearLayout>
